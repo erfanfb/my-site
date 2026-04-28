@@ -48,7 +48,7 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Floating Blobs for extra movement */
+        /* Floating Blobs */
         .blob {
             position: absolute;
             width: 500px;
@@ -114,7 +114,6 @@
             line-height: 0.85;
             margin-bottom: 1.5rem;
             letter-spacing: -3px;
-            /* Animated Text Gradient */
             background: linear-gradient(90deg, #fff, var(--color4), #fff);
             background-size: 200% auto;
             -webkit-background-clip: text;
@@ -166,13 +165,27 @@
             100% { transform: scale(1); opacity: 1; }
         }
 
+        /* Footer with link */
         .footer {
             position: absolute;
             bottom: 30px;
             font-size: 0.7rem;
             color: rgba(255, 255, 255, 0.4);
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             text-transform: uppercase;
+            text-align: center;
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--color4);
+            text-shadow: 0 0 10px var(--color4);
         }
 
         @media (max-width: 480px) {
@@ -204,7 +217,7 @@
     </div>
 
     <div class="footer">
-        © 2026 KHUNJI • DIGITAL CREATIVE STUDIO
+        © 2026 KHUNJI • By <a href="https://frexweb.com" target="_blank">Frexweb.com</a>
     </div>
 
 </body>
