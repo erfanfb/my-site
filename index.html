@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Khunji.org | Experience the Future</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -15,21 +15,24 @@
             --color4: #00d2ff;
         }
 
-        * {
+        /* Prevent scrolling on both html and body */
+        html, body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Strict no-scroll */
+            position: fixed; /* Prevents "pull-to-refresh" on some mobile browsers */
         }
 
         body {
-            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
             background: #000;
-            position: relative;
+            /* Using dvh for exact mobile height */
+            height: 100dvh; 
+            font-family: 'Poppins', sans-serif;
         }
 
         /* Animated Background Mesh */
@@ -51,40 +54,41 @@
         /* Floating Blobs */
         .blob {
             position: absolute;
-            width: 500px;
-            height: 500px;
+            width: 300px;
+            height: 300px;
             background: var(--color4);
             filter: blur(80px);
             border-radius: 50%;
             z-index: -1;
             opacity: 0.4;
-            animation: moveBlob 20s infinite alternate;
+            animation: moveBlob 15s infinite alternate;
         }
 
         .blob-2 {
             background: var(--color1);
-            right: -100px;
-            top: -100px;
-            animation-duration: 15s;
+            right: -50px;
+            top: -50px;
+            animation-duration: 10s;
         }
 
         @keyframes moveBlob {
             from { transform: translate(-10%, -10%); }
-            to { transform: translate(20%, 20%); }
+            to { transform: translate(15%, 15%); }
         }
 
         .main-card {
             text-align: center;
-            padding: 5rem 3rem;
-            width: 90%;
-            max-width: 850px;
-            background: rgba(255, 255, 255, 0.07);
-            backdrop-filter: blur(40px);
-            -webkit-backdrop-filter: blur(40px);
-            border-radius: 60px;
+            padding: 3rem 2rem;
+            width: 85%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-radius: 40px;
             border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
             animation: cardFade 1.2s ease-out;
+            z-index: 1;
         }
 
         @keyframes cardFade {
@@ -93,8 +97,8 @@
         }
 
         .icon-box {
-            font-size: 4.5rem;
-            margin-bottom: 2rem;
+            font-size: clamp(3rem, 10vw, 4.5rem);
+            margin-bottom: 1rem;
             display: inline-block;
             background: linear-gradient(to bottom, #fff, var(--color4));
             -webkit-background-clip: text;
@@ -104,16 +108,16 @@
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-10px); }
         }
 
         .main-title {
-            font-size: clamp(3.5rem, 12vw, 7.5rem);
+            font-size: clamp(2.8rem, 12vw, 5.5rem);
             font-weight: 900;
             text-transform: uppercase;
-            line-height: 0.85;
-            margin-bottom: 1.5rem;
-            letter-spacing: -3px;
+            line-height: 0.9;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
             background: linear-gradient(90deg, #fff, var(--color4), #fff);
             background-size: 200% auto;
             -webkit-background-clip: text;
@@ -126,54 +130,53 @@
         }
 
         .brand-label {
-            font-size: 1.4rem;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
             font-weight: 400;
-            letter-spacing: 12px;
+            letter-spacing: 8px;
             color: #fff;
             text-transform: uppercase;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             display: block;
             opacity: 0.9;
-            text-shadow: 0 0 10px rgba(255,255,255,0.3);
         }
 
         .status-badge {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            padding: 10px 25px;
+            gap: 10px;
+            padding: 8px 20px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50px;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             color: #fff;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .dot {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             background: #00ff88;
             border-radius: 50%;
-            box-shadow: 0 0 15px #00ff88;
+            box-shadow: 0 0 10px #00ff88;
             animation: pulse 1.5s infinite;
         }
 
         @keyframes pulse {
             0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.5); opacity: 0.5; }
+            50% { transform: scale(1.4); opacity: 0.6; }
             100% { transform: scale(1); opacity: 1; }
         }
 
-        /* Footer with link */
         .footer {
             position: absolute;
-            bottom: 30px;
-            font-size: 0.7rem;
+            bottom: 20px;
+            font-size: 0.65rem;
             color: rgba(255, 255, 255, 0.4);
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             text-align: center;
+            width: 100%;
         }
 
         .footer a {
@@ -185,13 +188,13 @@
 
         .footer a:hover {
             color: var(--color4);
-            text-shadow: 0 0 10px var(--color4);
         }
 
-        @media (max-width: 480px) {
-            .main-card { padding: 4rem 1rem; border-radius: 40px; }
-            .main-title { letter-spacing: -1px; }
-            .brand-label { letter-spacing: 6px; font-size: 1.1rem; }
+        /* Mobile specific adjustments to ensure NO overflow */
+        @media (max-height: 600px) {
+            .main-card { padding: 2rem 1rem; }
+            .icon-box { margin-bottom: 0.5rem; }
+            .brand-label { margin-bottom: 1.5rem; }
         }
     </style>
 </head>
